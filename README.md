@@ -1,6 +1,6 @@
 # PokemonApi
 
-Picachu, I choose you! Welcome to my first API/Cli project! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pokemon_api`. To experiment with that code, run `bin/console` for an interactive prompt.
+Pikachu, I choose you! Welcome to my first API/Cli project! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pokemon_api`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 
 
