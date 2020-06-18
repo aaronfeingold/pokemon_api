@@ -3,7 +3,7 @@ class Cli
     def run
         puts "Gotta' Catch Em' All!"
 
-        puts "Pack you pokeballs, we're going hunting today..."
+        puts "Pack your pokeballs, we're going hunting today..."
 
         API.get_pokemon
         puts "A wild animal with magic powers randomly appeared, how unexpected."
@@ -11,7 +11,9 @@ class Cli
     end 
 
     def print_main_menu
-        puts "Press 1 to list out Pokemon"
+        puts ""
+        puts "Press 1 to list out all the Pokemon that appeared."
+        puts "Press 2 to get all the abilities of said Pokemon."
         puts "Type 'exit' to exit program"
         main_menu
     end 
@@ -22,6 +24,9 @@ class Cli
         if user_input == "1"
             print_pokemon
             print_main_menu
+        elsif user_input == "2"
+            print_poke_info_menu
+            print_main_menu 
         elsif user_input == "exit"
             goodbye
             exit
@@ -40,8 +45,17 @@ class Cli
         end 
     end 
 
+    def print_poke_info_menu
+        puts ""
+        puts "---------"
+        Pokemon.all.each.with_index(1) do |poke, index|
+            puts ""
+            puts "#{poke.name.capitalize} has these abilities: #{poke.abilities.join(", ")}"
+        end 
+    end 
+
     def goodbye
-        puts "In Russia, Pickachu did not choose you."
+        puts "In Russia, Pikachu did not choose you."
     end  
 
     def invalid_input
