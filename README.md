@@ -1,8 +1,8 @@
 # PokemonApi
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pokemon_api`. To experiment with that code, run `bin/console` for an interactive prompt.
+Picachu, I choose you! Welcome to my first API/Cli project! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pokemon_api`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-TODO: Delete this and the text above, and describe your gem
+
 
 ## Installation
 
@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+It will tell you a list of pokemon from a site...but soon it will do much more. For instance, once you select the pokemon, then you can find out specific info on that pokemon, because you never know when you might need to know how a water type can beat an electric type...
 
 ## Development
 
