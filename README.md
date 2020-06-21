@@ -2,6 +2,8 @@
 
 Pikachu, I choose you! Welcome to my first API/Cli project! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pokemon_api`. To experiment with that code, run `bin/console` for an interactive prompt.
 
+Currently, this program only goes as deep as to give the user the capability of finding out the abilities of a chosen pokemon from an abbreviated list of pokemon. I would like to expand upon it, of course. In so doing, the program would then access all 900+ pokemon. However, despite research, I was not able to write the correct code to access all that data. Moreover, I've created reader/writer methods for other attributes which are not utlized in the CLI itself. These redunancies have been commented out for you--the user--to critique and make suggestions in order to ammend, improve, and to give functionality in the refactoring process.
+
 
 
 ## Installation
