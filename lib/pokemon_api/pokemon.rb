@@ -1,5 +1,5 @@
 class Pokemon
-    attr_accessor :name, :url, :abilities, :moves
+    attr_accessor :name, :url, :abilities, :moves, :types
     
     @@all = [] 
 
@@ -17,9 +17,14 @@ class Pokemon
         @@all
     end
     
-    def find_by_name(name)
+    def find_all_by_name(name)
         self.all.find {|obj| obj.name == name}
     end 
+
+    def find_all_by_type(type)
+        self.all.find { |obj| object.type == type}
+    end
+
 end 
 
 

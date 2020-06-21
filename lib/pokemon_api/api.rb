@@ -26,6 +26,7 @@ class API
             data = JSON.parse(info)
             pokemon.abilities = data["abilities"].map { |hash| hash["ability"]["name"] } 
             pokemon.moves = data["moves"].map { |hash| hash["move"]["name"] }
+            pokemon.types = data["types"].map { |hash| hash["type"]["name"] }
             # binding.pry
         end
     end 
