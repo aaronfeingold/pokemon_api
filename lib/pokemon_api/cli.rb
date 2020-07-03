@@ -54,7 +54,7 @@ class Cli
             #     sort_pokemon_types
             when "exit"
                 goodbye 
-            when ""
+            else
                 invalid_input
             end
         end     
