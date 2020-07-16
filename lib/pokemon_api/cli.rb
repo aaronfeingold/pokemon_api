@@ -27,8 +27,8 @@ class Cli
             puts "               ---------"
             puts "To find out how many Pokemon there are, hit '1' then enter."
             puts "To list all the Pokemon, hit '2' then enter."
-            puts "To learn an individual pokemon's ability(-ies), hit '3' then enter."
-            puts "To learn an individual pokemon's type(s), hit '4' then enter."
+            puts "To learn an individual pokemon's type(s), hit '3' then enter."
+            puts "To learn an individual pokemon's ability(-ies), hit '4' then enter."
             puts "To learn an individual pokemon's move(s), hit '5' then enter."
             puts "To search for all information available about a particular Pokmeon by that Pokemon's name, hit '6' then enter."
             puts "To quit the program, type '99' then enter."
@@ -41,9 +41,9 @@ class Cli
             when "2"
                 list_pokemon
             when "3"
-                show_pokemon_abilities
-            when "4"
                 show_pokemon_types
+            when "4"
+                show_pokemon_abilities
             when "5"
                 show_pokemon_moves
             when "6"
@@ -73,6 +73,18 @@ class Cli
         end 
         puts "-----------------------------------"
     end 
+    def show_pokemon_types 
+        puts ""
+        puts "Please enter the Pokedex number of the Pokemon who's TYPES you would like to see (1-20)"
+        
+        input = gets.strip
+        if input.to_i.between?(1, Pokemon.all.length)
+            pokemon = Pokemon.all[input.to_i-1]
+            puts ""
+            puts "A #{pokemon.name.capitalize} belongs to this/these type(s): #{pokemon.types.join(", ")}"
+         end 
+         puts "------------------------------"
+    end 
 
     def show_pokemon_abilities 
         puts ""
@@ -83,19 +95,6 @@ class Cli
             pokemon = Pokemon.all[input.to_i-1]
             puts ""
             puts "The abilities of #{pokemon.name.capitalize} are: #{pokemon.abilities.join(", ")}"
-         end 
-         puts "------------------------------"
-    end 
-
-    def show_pokemon_types 
-        puts ""
-        puts "Please enter the Pokedex number of the Pokemon who's TYPES you would like to see (1-20)"
-        
-        input = gets.strip
-        if input.to_i.between?(1, Pokemon.all.length)
-            pokemon = Pokemon.all[input.to_i-1]
-            puts ""
-            puts "A #{pokemon.name.capitalize} belongs to this/these type(s): #{pokemon.types.join(", ")}"
          end 
          puts "------------------------------"
     end 
@@ -117,7 +116,7 @@ class Cli
     def get_all_info_by_name
         puts ""
         puts "______"
-        puts "Please enter the Pokemon's NAME from the given list who's detailed information you'd like to see (1-20)"
+        puts "Please enter the Pokemon's NAME from the given list who's available information you'd like to see."
         puts "Otherwise, please enter '1' to return to the main menu."
         puts "------"
         user_input = gets.strip.downcase
