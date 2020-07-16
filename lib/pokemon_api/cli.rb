@@ -31,7 +31,7 @@ class Cli
             puts "To learn an individual pokemon's type(s), hit '4' then enter."
             puts "To learn an individual pokemon's move(s), hit '5' then enter."
             puts "To search for all information available about a particular Pokmeon by that Pokemon's name, hit '6' then enter."
-            puts "To quit the program, type '9' then enter."
+            puts "To quit the program, type '99' then enter."
         
             user_input = gets.strip
 
@@ -48,7 +48,7 @@ class Cli
                 show_pokemon_moves
             when "6"
                 get_all_info_by_name
-            when "9"
+            when "99"
                 goodbye 
             else
                 invalid_input
@@ -95,7 +95,7 @@ class Cli
         if input.to_i.between?(1, Pokemon.all.length)
             pokemon = Pokemon.all[input.to_i-1]
             puts ""
-            puts "The types of #{pokemon.name.capitalize} are: #{pokemon.types.join(", ")}"
+            puts "A #{pokemon.name.capitalize} belongs to this/these type(s): #{pokemon.types.join(", ")}"
          end 
          puts "------------------------------"
     end 
@@ -108,7 +108,8 @@ class Cli
         if input.to_i.between?(1, Pokemon.all.length)
             pokemon = Pokemon.all[input.to_i-1]
             puts ""
-            puts "The moves of #{pokemon.name.capitalize} are: #{pokemon.moves.join(", ")}"
+            puts "Here is a list off all the moves that #{pokemon.name.capitalize} can do:"
+            puts "#{pokemon.moves.join(", ")}"
          end 
          puts "------------------------------"
     end 
@@ -122,11 +123,13 @@ class Cli
         user_input = gets.strip.downcase
         if pokemon = Pokemon.find_pokemon_by_name(user_input)
             puts ""
-            puts "#{pokemon.name.capitalize}'s type(s) is/are: #{pokemon.types.join(", ")}"
+            puts "Here is all the information we have on #{pokemon.name.capitalize}:"
+            puts ""
+            puts "1.) Type(s): #{pokemon.types.join(", ")}"
             puts "-----"
-            puts "The ability(-ies) of #{pokemon.name.capitalize} is/are: #{pokemon.abilities.join(", ")}"
+            puts "2.) Ability(-ies): #{pokemon.abilities.join(", ")}"
             puts "-----"
-            puts "The moves of #{pokemon.name.capitalize} are: #{pokemon.moves.join(", ")}"
+            puts "3.) Moves: #{pokemon.moves.join(", ")}"
             puts "-----"
             get_all_info_by_name
         elsif user_input == "1"
