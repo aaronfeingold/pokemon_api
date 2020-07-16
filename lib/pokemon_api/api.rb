@@ -1,13 +1,8 @@
 class API
     BASE_URL = "https://pokeapi.co/api/v2"
 
-    def self.get_pokemon(next_page=nil)
-        reponse = nil 
-        if next_page
-            response = RestClient.get(next_page)
-        else 
-            response = RestClient.get(BASE_URL + "/pokemon")
-        end 
+    def self.get_pokemon
+        response = RestClient.get(BASE_URL + "/pokemon")
         data = JSON.parse(response)
         data["results"].each do |pokemon_data|
             name = pokemon_data["name"]
@@ -27,7 +22,6 @@ class API
             pokemon.abilities = data["abilities"].map { |hash| hash["ability"]["name"] } 
             pokemon.moves = data["moves"].map { |hash| hash["move"]["name"] }
             pokemon.types = data["types"].map { |hash| hash["type"]["name"] }
-            # binding.pry
         end
     end 
 end 
