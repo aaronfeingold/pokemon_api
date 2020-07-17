@@ -218,13 +218,13 @@ class Cli
             puts "-----"
             puts "3.) Moves: #{pokemon.moves.join(", ")}"
             puts "-----"
-            get_all_info_by_name
+            menu_get_all_info_by_name
         elsif user_input == "1"
             main_menu 
         else
             puts "That pokemon does not exist (in our list, at least)..."
             puts "Please try again!"
-            get_all_info_by_name
+            menu_get_all_info_by_name
         end 
     end 
 
