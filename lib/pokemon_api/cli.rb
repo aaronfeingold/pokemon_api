@@ -9,7 +9,7 @@ class Cli
 
         puts "Before heading out on our adventure, we'll need to pack up our pokeballs."
 
-        API.get_first_page_of_pokemon
+        PokeDex.get_first_page_of_pokemon
 
         puts ""
         puts "Oh? A wild pack of animals with magical powers randomly appeared. How unexpected!"
@@ -143,7 +143,7 @@ class Cli
         puts "Please allow us a moment to process your request..."
         puts "------"
 
-        API.get_pokemon_details
+        PokeDex.get_pokemon_details
 
         if arg == "types"
             atr = arg
@@ -200,7 +200,7 @@ class Cli
         puts "Please allow us a moment to process your request..."
         puts "------"
 
-        API.get_pokemon_details
+        PokeDex.get_pokemon_details
 
         puts ""
         puts "______"

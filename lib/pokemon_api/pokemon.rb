@@ -11,7 +11,8 @@ class Pokemon
         self.url = url
         self.save 
         @@counter += 1
-    end 
+    end
+    
     def save
         @@all << self 
     end 
@@ -31,12 +32,3 @@ class Pokemon
     end
 
 end 
-
-
-# bulba = Pokemon.new(:name => "Bulbasaur", :url => "bulbasau.com")
-# char = Pokemon.new(:name => "Charmander", :url => "charmander.com")
-# squirt = Pokemon.new(:name => "Squirtle", :url => "squirtle.com")
-
-
-
-# binding.pry
