@@ -6,8 +6,11 @@ Gem::Specification.new do |spec|
   spec.authors       = ["aaronfeingold"]
   spec.email         = ["ajfeingold88@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = "Connect to open api to get info on the first 150 Pokemon"
+  spec.description   = <<-EOF
+    API uses RestClient to parse JSON response and save or update new Pokemon objects. 
+    CLI allows you to interact 
+  EOF
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")

@@ -12,14 +12,23 @@ def get_data
   end 
 
   return all_poke_data
+
 end 
 
-data = get_data
-print(data.first)
+def extract_data
+
+  data = get_data
+  
+  keys = data.first.keys
+
+  data.each do |item|
+    # for each key, create a new class Model attribute
+  end
+
+end
 
 
-
-
+extract_data
 
 
 

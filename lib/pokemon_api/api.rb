@@ -1,5 +1,6 @@
 class PokeDex
-    BASE_URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20"
+    # to-do: increase or decrease limit of query
+    BASE_URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=5"
 
     def self.create_poke_dex
         response = RestClient.get(BASE_URL)
@@ -8,7 +9,7 @@ class PokeDex
         data["results"].each do |pokemon_data|
             name = pokemon_data["name"]
             url = pokemon_data["url"]
-            Pokemon.new(name: name,url: url)
+            Pokemon.new(name: name, url: url)
         end
     end 
 
