@@ -4,14 +4,12 @@ def get_data(event)
   # create a new api object
   api_obj = API.new
   # create a new PokeDex object 
-  pd_obj = api_obj.get_data
   # create many new Poke objects
-  pokes = pd_obj.create_pokes
+  pd_obj = api_obj.get_data
   # get the first poke_obj
-  poke_obj = pokes[0]
-
+  poke_obj = pd_obj.poke_objs[0]
   Poke.get_more_from_url(poke_obj)
-  binding.pry
+  poke_obj.get_all_details  
 end
 
 # example: 
@@ -79,3 +77,42 @@ dict = get_data(event)
 #   end
 #   binding.pry
 # end
+
+
+# ["abilities",
+#  "base_experience",
+#  "forms",
+#  "game_indices",
+#  "height",
+#  "held_items",
+#  "id",
+#  "is_default",
+#  "location_area_encounters",
+#  "moves",
+#  "name",
+#  "order",
+#  "past_types",
+#  "species",
+#  "sprites",
+#  "stats",
+#  "types",
+#  "weight"]
+
+# [:abilities,
+#  :base_experience,
+#  :forms,
+#  :game_indices,
+#  :height,
+#  :held_items,
+#  :id,
+#  :is_default,
+#  :location_area_encounters,
+#  :moves,
+#  :name,
+#  :order,
+#  :past_types,
+#  :species,
+#  :sprites,
+#  :stats,
+#  :types,
+#  :weight]

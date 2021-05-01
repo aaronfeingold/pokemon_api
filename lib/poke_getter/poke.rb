@@ -1,15 +1,16 @@
-class Poke
-    attr_accessor :name, :url, :more, :details
+class Poke < Detailer
+    attr_accessor :name, :url, :more, :detail
 
     # an array of poke_obj
     @@all = []
+    # lets start small
     @@counter = 0
 
-    def initialize(poke)
-        @name = poke["name"]
-        @url = poke["url"]
+    def initialize(dex_obj)
+        @name = dex_obj["name"]
+        @url = dex_obj["url"]
         @more = nil
-        @details = []
+        @detail = []
         self.save
         @@counter += 1
     end
@@ -27,7 +28,7 @@ class Poke
         @@counter
     end
 
-    # this can be very well modified. suffices.
+    # this can be modified. suffices for development
     def self.list
         @@all.each {|pk| print "#{pk.name}\n"}
     end
@@ -47,12 +48,10 @@ class Poke
 
     # note: pokeman have lots of little details.
     # another class will handle creating the attributes, the detailer
-    def self.get_all_details(poke_obj)
-        if poke_obj.more = nil
-            self.get_more_from_url(poke_obj)
-            poke_obj.details <<
-        else
-            
+    def get_all_details
+        if self.more != nil
+            self.detail << Detailer.get_attrs(self.more)
+            self.save
         end
     end
     
