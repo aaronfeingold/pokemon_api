@@ -4,19 +4,20 @@ def get_data(event)
   api = API.new 
   poke_dex = api.get_data
   poke_dex.create_poke_from_dex
+  bulba = Poke.all.first
   Poke.get_more_from_url
-  Poke.get_all_details
-  binding.pry
+  p Poke.get_all_details(bulba)
 end
-# keys = results.first.keys
-# sc = PokeSubClass.new
-# sc.create_attributes(keys)
-# p sc.attr_accessors
 
 # example: 
 event = "amazon_cloud_watch"
 
 dict = get_data(event)
+
+# # keys = results.first.keys
+# # sc = PokeSubClass.new
+# # sc.create_attributes(keys)
+# # p sc.attr_accessors
 
 # Poke.all.first.details.keys
   # all_poke_data = Array.new

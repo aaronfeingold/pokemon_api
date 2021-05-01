@@ -43,27 +43,36 @@ class Poke
         end
     end
 
-    def self.get_all_details
-        @@all.each do |pk|
-            pk.abilities = pk.more["abilities"]
-            pk.base_experience = pk.more["base_experience"]
-            pk.forms = pk.more["forms"]
-            pk.game_indices = pk.more["game_indices"]
-            pk.height = pk.more["height"]
-            pk.held_items = pk.more["held_items"]
-            pk.id = pk.more["id"]
-            pk.is_default = pk.more["is_default"]
-            pk.location_area_encounters = pk.more["location_area_encounters"]
-            pk.moves = pk.more["moves"]
-            pk.name = pk.more["name"]
-            pk.order = pk.more["order"]
-            pk.past_types = pk.more["past_types"]
-            pk.species = pk.more["species"]
-            pk.sprites = pk.more["sprites"]
-            pk.stats = pk.more["stats"]
-            pk.types = pk.more["types"]
-            pk.weight = pk.more["weight"]
-        end
+    def self.get_all_details(poke)
+        # THIS NEEDS TO BE PROGRAMMATIC. TOO MANUAL
+        a = [poke.game_indices, poke.height, poke.held_items, poke.id, poke.is_default, poke.location_area_encounters, poke.moves, poke.name, poke.order, poke.past_types, poke.species, poke.sprites, poke.stats, poke.types, poke.weight ]
+
+        binding.pry
+        # poke.more["abilities"] =
+        # poke.more["base_experience"] = 
+        # poke.more["forms"] = 
+        # poke.more["game_indices"] = 
+        # poke.more["height"] = 
+        # poke.more["held_items"] =
+        # poke.more["id"] =
+        # poke.more["is_default"] =
+        # poke.more["location_area_encounters"] =
+        # poke.more["moves"] =
+        # poke.more["name"] =
+        # poke.more["order"] =
+        # poke.more["past_types"] =
+        # poke.more["species"] =
+        # poke.more["sprites"] =
+        # poke.more["stats"] =
+        # poke.more["types"] =
+        # poke.more["weight"] =
+        # return poke
+
+
+    end
+
+    def self.find_poke_by_name(name)
+         @@all.find{|poke| poke.name.downcase === name.downcase }
     end
     
 end
