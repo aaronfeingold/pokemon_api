@@ -27,16 +27,16 @@ class Cli
             puts "               Main Menu"
             puts "               ---------"
             puts "To open the poke dex, type '1' then enter."
-            puts "To quit the program, type '99' then enter."
+            puts "To quit the program 'q' "
         
             user_input = gets.strip
 
             case user_input 
             when "1"
                 open_poke_dex(api)
-            when "99"
+            when "q"
                 goodbye 
-            when "exit"
+            when "q"
                 exit
             else
                 invalid_input
@@ -45,24 +45,23 @@ class Cli
     end 
 
     def open_poke_dex(api)
-        user_input = ""
         poke_dex = api.get_data
         count = api.count
-
+        puts "------------------------------"
+        puts "There are a total of: #{count} pokemon here."
+        puts "------------------------------"
+        
+        user_input = ""
         while user_input != "exit"
-            puts""
-            puts "------------------------------"
-            puts "There are a total of: #{count} pokemon here."
-            puts "------------------------------"
-            puts "To list"
-            puts "--all the Pokemon here, hit '1' then enter"
+            puts "Create List"
+            puts "--of all Pokemon, enter '1' "
             puts "Otherwise, type '86' to return to the main menu"
 
             user_input = gets.strip
 
             case user_input 
             when "1"
-                list_pokemon(poke_dex)
+                list_pokemon(api, poke_dex)
             when "86"
                 main_menu(api=api)
             when "exit"
@@ -73,15 +72,15 @@ class Cli
         end
     end 
 
-    def list_pokemon(poke_dex)
-        user_input = ""
-        poke_dex.create_poke_from_dex
+    def list_pokemon(api, poke_dex)
+        puts "One moment please..."
+        poke_dex.create_pokes
         puts "_______________"
         puts "listing..."
-        pokes = Poke.all
-        pokes.each {|pk| print "#{pk.name}\n"}
+        Poke.list
         puts "Would you like more info? [y/N]"
-
+        
+        user_input = ""
         while user_input != "exit"
             user_input = gets.strip
 
@@ -122,7 +121,7 @@ class Cli
     end
 
     def get_poke_by_name
-        user_input = ""
+        
         puts "please enter the name of the pokemon who's details you'd like to view"
         name = gets.strip
         poke = Poke.find_poke_by_name(name)
@@ -134,11 +133,11 @@ class Cli
         end
 
         print "type '1' to see all of details for this pokemon"
-
+        user_input = ""
         while user_input != "exit"
             user_input = gets.strip
 
-            case user_input 
+        case user_input 
             when "1"
                 get_poke_details(poke)
             when "86"

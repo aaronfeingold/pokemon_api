@@ -1,12 +1,17 @@
 require_relative 'environment.rb'
 
 def get_data(event)
-  api = API.new 
-  poke_dex = api.get_data
-  poke_dex.create_poke_from_dex
-  bulba = Poke.all.first
-  Poke.get_more_from_url
-  p Poke.get_all_details(bulba)
+  # create a new api object
+  api_obj = API.new
+  # create a new PokeDex object 
+  pd_obj = api_obj.get_data
+  # create many new Poke objects
+  pokes = pd_obj.create_pokes
+  # get the first poke_obj
+  poke_obj = pokes[0]
+
+  Poke.get_more_from_url(poke_obj)
+  binding.pry
 end
 
 # example: 
