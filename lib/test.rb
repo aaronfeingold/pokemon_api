@@ -3,8 +3,7 @@ require_relative 'environment.rb'
 def get_data(event)
   api = API.new 
   poke_dex = api.get_data
-  pokedex = PokeDex.new(poke_dex=poke_dex)
-  pokedex.create_poke_from_dex
+  poke_dex.create_poke_from_dex
   Poke.get_more_from_url
   Poke.get_all_details
   binding.pry
