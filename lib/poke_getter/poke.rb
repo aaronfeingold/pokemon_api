@@ -1,5 +1,5 @@
-class Poke < Detailer
-    attr_accessor :name, :url, :more, :detail
+class Poke
+    attr_accessor :name, :url, (*@attributes)
 
     # an array of poke_obj
     @@all = []
@@ -9,8 +9,7 @@ class Poke < Detailer
     def initialize(dex_obj)
         @name = dex_obj["name"]
         @url = dex_obj["url"]
-        @more = nil
-        @detail = []
+        @attributes = nil
         self.save
         @@counter += 1
     end
@@ -33,28 +32,29 @@ class Poke < Detailer
         @@all.each {|pk| print "#{pk.name}\n"}
     end
 
-    # this does the work of getting more data from many urls
-    def self.get_more_from_url(poke_obj)
-        json = RestClient.get(poke_obj.url)
-        data = JSON.parse(json)
-        poke_obj.more = data
-        poke_obj.save
-    end
-
     # query by name; user input must be correct
     def self.find_poke_by_name(name)
          @@all.find{|poke| poke.name.downcase === name.downcase }
     end
 
-    # note: pokeman have lots of little details.
-    # another class will handle creating the attributes, the detailer
-    def get_all_details
-        if self.more != nil
-            self.detail << Detailer.get_attrs(self.more)
-            self.save
-        end
+    # this does the work of getting more data from many urls
+    def self.get_data_from_url(poke_obj)
+        json = RestClient.get(poke_obj.url)
+        data = JSON.parse(json)
+        return data
     end
-    
+
+    # note: pokeman have lots of little details.
+    def self.get_details(poke_obj)
+        data = self.get_data_from_url(poke_obj)
+        keys = data.keys
+       
+    end
+
+    def get_value(poke_obj, attribute)
+
+    end
+
 end
 
 
@@ -62,7 +62,7 @@ end
 
 # attrs = [@abilities, @base_experience, @forms, @game_indices, @height, @held_items, @id, @is_default, @location_area_encounters, @moves, @name, @order, @past_types, @species, @sprites, @stats, @types, @weight ]
         
-# poke.more["abilities"] = attrs[0]
+# poke.attributes["abilities"] = attrs[0]
 # poke.more["base_experience"] = attrs[1]
 # poke.more["forms"] = attrs[2]
 # poke.more["game_indices"] = attrs[3]

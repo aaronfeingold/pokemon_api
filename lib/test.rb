@@ -8,8 +8,8 @@ def get_data(event)
   pd_obj = api_obj.get_data
   # get the first poke_obj
   poke_obj = pd_obj.poke_objs[0]
-  Poke.get_more_from_url(poke_obj)
-  poke_obj.get_all_details  
+  Poke.get_details(poke_obj)
+  binding.pry 
 end
 
 # example: 
