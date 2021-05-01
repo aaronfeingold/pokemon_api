@@ -26,25 +26,13 @@ class Cli
             puts "               _________"
             puts "               Main Menu"
             puts "               ---------"
-            # puts "To find out how many Pokemon there are, hit '1' then enter."
-            # puts "To list all the Pokemon, hit '2' then enter."
-            # puts "To learn an individual pokemon's attibutes, hit '3' then enter."
-            # puts "To search for all information available about a particular Pokmeon by that Pokemon's name, hit '4' then enter."
-            puts "To open the poke dex, type '5' then enter."
+            puts "To open the poke dex, type '1' then enter."
             puts "To quit the program, type '99' then enter."
         
             user_input = gets.strip
 
             case user_input 
-            # when "1"
-            #     pokemon_count_menu(gpd)
-            # when "2"
-            #     list_pokemon
-            # when "3"
-            #     menu_pokemon_attributes
-            # when "4"
-            #     menu_get_all_info_by_name
-            when "5"
+            when "1"
                 open_poke_dex(api)
             when "99"
                 goodbye 
@@ -59,30 +47,22 @@ class Cli
     def open_poke_dex(api)
         poke_dex = api.get_data
         count = api.count
-        puts "There are a total of: #{count}"
-    end
 
-    def pokemon_count_menu(api)
-        number_of_pokemon_parsed = 
-        user_input = ""
         while user_input != "exit"
             puts""
             puts "------------------------------"
-            puts "There are a total of: #{number_of_pokemon_parsed} here."
+            puts "There are a total of: #{count} here."
             puts "------------------------------"
             puts "To list"
             puts "--all the Pokemon here, hit '1' then enter"
-            puts "--all the Pokemon here by alphabetical order, hit '2' then enter"
-            puts "Otherwise, hit '3' to return to the main menu"
+            puts "Otherwise, type '86' to return to the main menu"
 
             user_input = gets.strip
 
             case user_input 
             when "1"
-                list_pokemon
-            when "2"
-                list_pokemon_by_alpha_asc
-            when "3"
+                list_pokemon(poke_dex)
+            when "86"
                 main_menu
             when "exit"
                 exit 
