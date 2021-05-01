@@ -9,40 +9,43 @@ class Cli
 
         puts "Before heading out on our adventure, we'll need to pack up our pokeballs."
 
-        PokeDex.get_first_page_of_pokemon
+        api = Api.new
 
         puts ""
         puts "Oh? A wild pack of animals with magical powers randomly appeared. How unexpected!"
         puts ""
         puts "Wouldn't it be great if we knew something more about them?"
 
-        main_menu
+        main_menu(api)
     end 
 
-    def main_menu
+    def main_menu(api)
         user_input = ""
         while user_input != "exit"
             puts ""
             puts "               _________"
             puts "               Main Menu"
             puts "               ---------"
-            puts "To find out how many Pokemon there are, hit '1' then enter."
-            puts "To list all the Pokemon, hit '2' then enter."
-            puts "To learn an individual pokemon's attibutes, hit '3' then enter."
-            puts "To search for all information available about a particular Pokmeon by that Pokemon's name, hit '4' then enter."
+            # puts "To find out how many Pokemon there are, hit '1' then enter."
+            # puts "To list all the Pokemon, hit '2' then enter."
+            # puts "To learn an individual pokemon's attibutes, hit '3' then enter."
+            # puts "To search for all information available about a particular Pokmeon by that Pokemon's name, hit '4' then enter."
+            puts "To open the poke dex, type '5' then enter."
             puts "To quit the program, type '99' then enter."
         
             user_input = gets.strip
 
             case user_input 
-            when "1"
-                pokemon_count_menu
-            when "2"
-                list_pokemon
-            when "3"
-                menu_pokemon_attributes
-            when "4"
-                menu_get_all_info_by_name
+            # when "1"
+            #     pokemon_count_menu(gpd)
+            # when "2"
+            #     list_pokemon
+            # when "3"
+            #     menu_pokemon_attributes
+            # when "4"
+            #     menu_get_all_info_by_name
+            when "5"
+                open_poke_dex(api)
             when "99"
                 goodbye 
             when "exit"
@@ -53,8 +56,14 @@ class Cli
         end     
     end 
 
-    def pokemon_count_menu
-        number_of_pokemon_parsed = Pokemon.count
+    def open_poke_dex(api)
+        poke_dex = api.get_data
+        count = api.count
+        puts "There are a total of: #{count}"
+    end
+
+    def pokemon_count_menu(api)
+        number_of_pokemon_parsed = 
         user_input = ""
         while user_input != "exit"
             puts""

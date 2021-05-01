@@ -1,7 +1,7 @@
-require_relative 'lib/pokemon_api/version'
+require_relative 'lib/poke_getter/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "pokemon_api"
+  spec.name          = "poke_getter"
   spec.version       = PokemonApi::VERSION
   spec.authors       = ["aaronfeingold"]
   spec.email         = ["ajfeingold88@gmail.com"]

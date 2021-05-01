@@ -4,6 +4,7 @@ source "https://rubygems.org"
 gem 'pry'
 gem 'rest-client'
 gem 'json'
+gem 'require_all'
 
 gem "rake", "~> 12.0"
 gem "rspec", "~> 3.0"
