@@ -156,15 +156,15 @@ class Cli
         puts "...details loaded"
         puts `#{detailed_poke}`
     end
-    # def list_pokemon_by_alpha_asc
-    #     puts""
-    #     puts "--------------------"
-    #     Pokemon.all.sort_by { |pokemon| pokemon.name }.each.with_index(1) do |pokemon, index| 
-    #         puts ""
-    #         puts "#{pokemon.name.capitalize}"
-    #     end
-    #     puts "-----------------------------------"
-    # end 
+    def list_pokemon_by_alpha_asc
+        puts""
+        puts "--------------------"
+        Pokemon.all.sort_by { |pokemon| pokemon.name }.each.with_index(1) do |pokemon, index| 
+            puts ""
+            puts "#{pokemon.name.capitalize}"
+        end
+        puts "-----------------------------------"
+    end 
 
      
 
