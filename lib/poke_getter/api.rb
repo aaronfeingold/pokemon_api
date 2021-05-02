@@ -1,6 +1,6 @@
 class API
     # responsible for initial API call
-    # source is free and public.
+    # source is free and
     BASE_URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=5"
     @@count = nil
 
