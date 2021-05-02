@@ -1,23 +1,27 @@
 require_relative 'environment.rb'
 
 def get_data(event)
-  api = API.new 
-  poke_dex = api.get_data
-  pokedex = PokeDex.new(poke_dex=poke_dex)
-  pokedex.create_poke_from_dex
-  Poke.get_more_from_url
-  Poke.get_all_details
-  binding.pry
+  # create a new api object
+  api_obj = API.new
+  # create a new PokeDex object 
+  # create many new Poke objects
+  pd_obj = api_obj.get_data
+  # get the first poke_obj
+  poke_obj = pd_obj.poke_objs[0]
+  poke_obj.get_details
+  poke_obj.create_attributes_list
+  binding.pry 
 end
-# keys = results.first.keys
-# sc = PokeSubClass.new
-# sc.create_attributes(keys)
-# p sc.attr_accessors
 
 # example: 
 event = "amazon_cloud_watch"
 
 dict = get_data(event)
+
+# # keys = results.first.keys
+# # sc = PokeSubClass.new
+# # sc.create_attributes(keys)
+# # p sc.attr_accessors
 
 # Poke.all.first.details.keys
   # all_poke_data = Array.new
@@ -74,3 +78,42 @@ dict = get_data(event)
 #   end
 #   binding.pry
 # end
+
+
+# ["abilities",
+#  "base_experience",
+#  "forms",
+#  "game_indices",
+#  "height",
+#  "held_items",
+#  "id",
+#  "is_default",
+#  "location_area_encounters",
+#  "moves",
+#  "name",
+#  "order",
+#  "past_types",
+#  "species",
+#  "sprites",
+#  "stats",
+#  "types",
+#  "weight"]
+
+# [:abilities,
+#  :base_experience,
+#  :forms,
+#  :game_indices,
+#  :height,
+#  :held_items,
+#  :id,
+#  :is_default,
+#  :location_area_encounters,
+#  :moves,
+#  :name,
+#  :order,
+#  :past_types,
+#  :species,
+#  :sprites,
+#  :stats,
+#  :types,
+#  :weight]
