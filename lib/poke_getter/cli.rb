@@ -7,7 +7,7 @@ class Cli
         puts "                  ---------------------"
         puts ""
 
-        puts "Before heading out on our adventure, we'll need to pack up our pokeballs."
+        puts "Before heading out on our adventure, we'll need download our PokeDex"
 
         api = API.new
 
@@ -16,10 +16,10 @@ class Cli
         puts ""
         puts "Wouldn't it be great if we knew something more about them?"
 
-        main_menu(api=api)
+        main_menu(api)
     end 
 
-    def main_menu(api=nil)
+    def main_menu(api)
         user_input = ""
         while user_input != "exit"
             puts ""
@@ -45,7 +45,7 @@ class Cli
     end 
 
     def open_poke_dex(api)
-        poke_dex = api.get_data
+        api.get_data
         count = api.count
         puts "------------------------------"
         puts "There are a total of: #{count} pokemon here."
@@ -61,9 +61,9 @@ class Cli
 
             case user_input 
             when "1"
-                list_pokemon(api, poke_dex)
+                list_pokemon(api)
             when "86"
-                main_menu(api=api)
+                main_menu(api)
             when "exit"
                 exit 
             else
@@ -74,11 +74,10 @@ class Cli
 
     def list_pokemon(api, poke_dex)
         puts "One moment please..."
-        poke_dex.create_pokes
         puts "_______________"
         puts "listing..."
         Poke.list
-        puts "Would you like more info? [y/N]"
+        puts "Would you like more details for a certain pokemon? [y/N]"
         
         user_input = ""
         while user_input != "exit"
@@ -86,9 +85,9 @@ class Cli
 
             case user_input 
             when "y"
-                get_more_info
-            when "86"
-                main_menu
+                get_poke_details_by_name(poke_dex)
+            when "N"
+                main_menu(api)
             when "exit"
                 exit 
             else
@@ -97,30 +96,13 @@ class Cli
         end
     end
 
-    def get_more_info
-        puts "One Moment, loading more info..."
-        Poke.get_more_from_url
+    def get_poke_details_by_name(api, poke_dex)
         user_input = ""
-        puts "to view a pokemon's data by name press 1"
-        puts "otherwise, 86 to main menu"
-        while user_input != "exit"
-            user_input = gets.strip
-
-            case user_input 
-            when "1"
-                get_poke_by_name
-            when "86"
-                main_menu
-            when "exit"
-                exit 
-            else
-                invalid_input
-            end
-        end
-        
-    end
-
-    def get_poke_by_name
+        puts "One Moment, loading more info..."
+        puts "_______________"
+        puts "Please enter the name of the pokemon you'd like details for."
+        user_input = gets.strip
+        get_poke_by_name(user_input)
         
         puts "please enter the name of the pokemon who's details you'd like to view"
         name = gets.strip
@@ -152,17 +134,15 @@ class Cli
 
     def get_poke_details(poke)
         puts "One moment, loading details..."
-        detailed_poke = Poke.get_all_details(poke)
+        detailed_poke = poke.get_details
         puts "...details loaded"
         puts `#{detailed_poke}`
     end
+
     def list_pokemon_by_alpha_asc
         puts""
         puts "--------------------"
-        Pokemon.all.sort_by { |pokemon| pokemon.name }.each.with_index(1) do |pokemon, index| 
-            puts ""
-            puts "#{pokemon.name.capitalize}"
-        end
+        Poke.sort_asc
         puts "-----------------------------------"
     end 
 

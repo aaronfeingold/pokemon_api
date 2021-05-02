@@ -28,6 +28,11 @@ class Poke
         @@counter
     end
 
+    def self.sort_asc
+        @@all.sort_by{ |pokemon| pokemon.name }.each.with_index(1) do |pokemon, index| 
+            puts "#{poke.name.capitalize}"
+        end
+    end
     # this can be modified. suffices for development
     def self.list
         @@all.each {|pk| print "#{pk.name}\n"}
@@ -60,6 +65,7 @@ class Poke
             if !key.include? "_"
                 self.attributes_list << key
             else
+                # lots of gsubing for readability
                 new_key = key.gsub("\_", " ")
                 self.attributes_list << new_key
             end

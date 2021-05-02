@@ -5,7 +5,7 @@ def get_data(event)
   api_obj = API.new
   # create a new PokeDex object 
   # create many new Poke objects
-  pd_obj = api_obj.get_data
+  pd_obj = api_obj.poke_dex_obj
   # get the first poke_obj
   poke_obj = pd_obj.poke_objs[0]
   poke_obj.get_details

@@ -21,6 +21,7 @@ class Hashit
   end
 
   def paramatize(k)
+    # get rid of peksy dashes
     if k.include? "-"
       new_k = k.gsub("\-", "_")
       return new_k
@@ -30,6 +31,7 @@ class Hashit
   end
 
   def save_key(k)
+    # we'll be needing this
     self.key_list << k
   end
 
